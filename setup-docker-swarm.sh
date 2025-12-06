@@ -205,11 +205,10 @@ services:
       - "--api.dashboard=true"
       - "--api.insecure=false"
       
-      # Docker Swarm
-      - "--providers.docker.swarmMode=true"
-      - "--providers.docker.endpoint=unix:///var/run/docker.sock"
-      - "--providers.docker.exposedbydefault=false"
-      - "--providers.docker.network=network_public"
+      # Docker Swarm Provider (v3 syntax)
+      - "--providers.swarm.endpoint=unix:///var/run/docker.sock"
+      - "--providers.swarm.exposedbydefault=false"
+      - "--providers.swarm.network=network_public"
       
       # Entrypoints
       - "--entrypoints.web.address=:80"

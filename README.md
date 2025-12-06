@@ -4,7 +4,7 @@ bash# Fazer login como root
 ssh root@seu_ip
 
 # Baixar o script
-wget https://raw.githubusercontent.com/seu-repo/setup-docker-swarm.sh
+wget https://github.com/wambhz/setup-docker-swarm.sh/blob/main/setup-docker-swarm.sh
 # OU copie o conteúdo do artifact acima
 
 # Tornar executável

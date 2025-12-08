@@ -221,7 +221,7 @@ services:
       # Let's Encrypt
       - "--certificatesresolvers.letsencryptresolver.acme.httpchallenge=true"
       - "--certificatesresolvers.letsencryptresolver.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.letsencryptresolver.acme.email=$EMAIL"
+      - "--certificatesresolvers.letsencryptresolver.acme.email=wambhz@gmail.com"
       - "--certificatesresolvers.letsencryptresolver.acme.storage=/etc/traefik/letsencrypt/acme.json"
       
       # Logs
@@ -251,15 +251,14 @@ services:
         - "traefik.enable=true"
         
         # Dashboard
-        - "traefik.http.routers.dashboard.rule=Host(\`traefik.$DOMAIN\`)"
+        - "traefik.http.routers.dashboard.rule=Host(`traefik.menteestrategica.com.br`)"
         - "traefik.http.routers.dashboard.entrypoints=websecure"
         - "traefik.http.routers.dashboard.service=api@internal"
         - "traefik.http.routers.dashboard.tls.certresolver=letsencryptresolver"
         - "traefik.http.routers.dashboard.middlewares=auth"
         
         # Autenticação básica (user: admin, pass: admin)
-        # Gere uma nova senha com: echo \$(htpasswd -nb admin sua_senha) | sed -e s/\\$/\\$\\$/g
-        - "traefik.http.middlewares.auth.basicauth.users=admin:\$\$apr1\$\$8EVjn/nj\$\$GiLUZqcbueTFeD23SuB6x0"
+        - "traefik.http.middlewares.auth.basicauth.users=admin:$$apr1$$8EVjn/nj$$GiLUZqcbueTFeD23SuB6x0"
 
 volumes:
   volume_swarm_certificates:
@@ -267,7 +266,7 @@ volumes:
 
 networks:
   network_public:
-    external: true
+    external: truena
 EOF
 
 docker stack deploy --prune --resolve-image always -c /root/traefik.yaml traefik

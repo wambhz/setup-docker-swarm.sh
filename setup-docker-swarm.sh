@@ -266,7 +266,7 @@ volumes:
 
 networks:
   network_public:
-    external: truena
+    external: true
 EOF
 
 docker stack deploy --prune --resolve-image always -c /root/traefik.yaml traefik

@@ -318,6 +318,7 @@ services:
         - "traefik.http.routers.portainer.tls.certresolver=letsencryptresolver"
         - "traefik.http.routers.portainer.service=portainer"
         - "traefik.http.services.portainer.loadbalancer.server.port=9000"
+        - "traefik.http.services.portainer.loadbalancer.server.scheme=http"
 
 volumes:
   portainer_data:
